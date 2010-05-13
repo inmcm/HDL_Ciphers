@@ -10,9 +10,9 @@ use IEEE.STD_LOGIC_1164.all;
 package AES_CONSTANTS is
 
   
-	type ARRAY_256 is ARRAY (0 to 255) of STD_LOGIC_VECTOR(7 downto 0);
-	type ARRAY_16  is ARRAY (0 to 15) of  STD_LOGIC_VECTOR(7 downto 0);
-	type ARRAY4x32 is ARRAY (0 to 3) of  STD_LOGIC_VECTOR(31	downto 0);  ----Byte Level Organization for a 128 bit field
+	type ARRAY_256 is ARRAY (0 to 255) of STD_LOGIC_VECTOR(7 downto 0); ----256 Byte Array
+	type ARRAY_16  is ARRAY (0 to 15) of  STD_LOGIC_VECTOR(7 downto 0); ----Byte Level Organization for a 128 bit field
+	type ARRAY4x32 is ARRAY (0 to 3) of  STD_LOGIC_VECTOR(31	downto 0);  ----Word Level Organization for a 128 bit field
 	constant SBOX : ARRAY_256 :=	(X"63",X"7c",X"77",X"7b",X"f2",X"6b",X"6f",X"c5",X"30",X"01",X"67",X"2b",X"fe",X"d7",X"ab",X"76",
 											X"ca",X"82",X"c9",X"7d",X"fa",X"59",X"47",X"f0",X"ad",X"d4",X"a2",X"af",X"9c",X"a4",X"72",X"c0",
 											X"b7",X"fd",X"93",X"26",X"36",X"3f",X"f7",X"cc",X"34",X"a5",X"e5",X"f1",X"71",X"d8",X"31",X"15",
@@ -46,7 +46,7 @@ package AES_CONSTANTS is
 												X"a0",X"e0",X"3b",X"4d",X"ae",X"2a",X"f5",X"b0",X"c8",X"eb",X"bb",X"3c",X"83",X"53",X"99",X"61",
 												X"17",X"2b",X"04",X"7e",X"ba",X"77",X"d6",X"26",X"e1",X"69",X"14",X"63",X"55",X"21",X"0c",X"7d");
 
-	constant rcon : ARRAY_16 :=  (X"01",X"02",X"04",X"08",X"10",X"20",X"40",X"80",X"1b",X"36",X"6c",X"d8",X"ab",X"4d",X"9a",X"2f");
+	constant rcon : ARRAY_16 :=  (X"01",X"02",X"04",X"08",X"10",X"20",X"40",X"80",X"1b",X"36",X"6c",X"d8",X"ab",X"4d",X"9a",X"2f"); -----Rotation Constants for Key Scheduling
  
 
 end AES_CONSTANTS;
