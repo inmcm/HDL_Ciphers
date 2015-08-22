@@ -177,7 +177,7 @@ INST_AddRoundKey: AddRoundKey PORT MAP(
 	);
 -----END Component Instatiation
 
-STATE_MACHINE_HEAD : PROCESS (SYS_CLK,RST) ----State Machine Master Control
+STATE_MACHINE_HEAD : PROCESS (SYS_CLK) ----State Machine Master Control
 begin
 	IF (SYS_CLK'event and SYS_CLK='1') then
 		IF (RST = '1') then
@@ -188,7 +188,7 @@ begin
 	END IF;
 END PROCESS;
 
-STATE_MACHINE_BODY : PROCESS (SYS_CLK,RST,PR_STATE,START,KEY_LOAD,OPN_COUNT,RND_COUNT) ---State Machine State Definitions
+STATE_MACHINE_BODY : PROCESS (START,OPN_COUNT,RND_COUNT, pr_state) ---State Machine State Definitions
 begin
 	CASE pr_state is
 		
@@ -223,7 +223,7 @@ begin
 END PROCESS;	
 				
 
-OPERATIONS_COUNTER : PROCESS (SYS_CLK,PR_STATE)  ----Counts through each step and each round of cipher sequence, affects data path mux and state machine
+OPERATIONS_COUNTER : PROCESS (SYS_CLK)  ----Counts through each step and each round of cipher sequence, affects data path mux and state machine
 begin	
 	IF (SYS_CLK'event and SYS_CLK='1') then
 		IF (PR_STATE = RESET_1 OR PR_STATE = RESET_2 OR PR_STATE = IDLE) then
@@ -240,7 +240,7 @@ END PROCESS;
 
 
 
-CIPHER_TEXT_OUTPUT_REGISTER : PROCESS(SYS_CLK,PR_STATE)   --Output Latch for ciphertext
+CIPHER_TEXT_OUTPUT_REGISTER : PROCESS(SYS_CLK)   --Output Latch for ciphertext
 begin
 	IF (SYS_CLK'event and SYS_CLK='1') then
 		IF (PR_STATE = RESET_1 OR PR_STATE = RESET_2) then

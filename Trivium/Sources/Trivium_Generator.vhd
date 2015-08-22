@@ -146,7 +146,7 @@ Inst_TRIVIUM_CORE_X: TRIVIUM_CORE PORT MAP(
 	);
 end generate;	
 	
-STATE_MACHINE_HEAD : PROCESS (SYS_CLK,RST) ----State Machine Master Control
+STATE_MACHINE_HEAD : PROCESS (SYS_CLK) ----State Machine Master Control
 begin
 	IF (SYS_CLK'event and SYS_CLK='1') then
 		IF (RST = '1') then   --Synchronous reset
@@ -157,7 +157,7 @@ begin
 	END IF;
 END PROCESS;
 
-STATE_MACHINE_BODY : PROCESS (SYS_CLK,pr_state,INIT_COUNTER) ---State Machine State Definitions
+STATE_MACHINE_BODY : PROCESS (pr_state,INIT_COUNTER) ---State Machine State Definitions
 begin
 	CASE pr_state is
 		
@@ -186,7 +186,7 @@ begin
 END PROCESS;	
 				
 
-CORE_CONTROL_REGISTER : PROCESS (SYS_CLK,PR_STATE)
+CORE_CONTROL_REGISTER : PROCESS (SYS_CLK)
 begin
 	IF (SYS_CLK'event and SYS_CLK='1') then
 		IF (PR_STATE = RESET_1 OR PR_STATE = RESET_2) then
@@ -209,7 +209,7 @@ END PROCESS;
 	
 
 
-INITIALIZATION_COUNTER : PROCESS (SYS_CLK,PR_STATE)  ----Counts cycles for init time, nominally 1152
+INITIALIZATION_COUNTER : PROCESS (SYS_CLK)  ----Counts cycles for init time, nominally 1152
 begin	
 	IF (SYS_CLK'event and SYS_CLK='1') then
 		IF (PR_STATE = RESET_1 OR PR_STATE = RESET_2) then
@@ -224,7 +224,7 @@ END PROCESS;
 	
 	
 	
-CIPHER_OUTPUT : PROCESS (SYS_CLK,PR_STATE)  ----Controls cipher text ouput register and its status register	
+CIPHER_OUTPUT : PROCESS (SYS_CLK)  ----Controls cipher text ouput register and its status register	
 begin
 	IF (SYS_CLK'event and SYS_CLK='1') then
 		IF (PR_STATE = RESET_1 OR PR_STATE = RESET_2) then	

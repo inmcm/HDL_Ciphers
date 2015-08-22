@@ -138,7 +138,7 @@ end GALOIS_MULTPY;
 begin
 
 ---Pipeline Registers
-Registers : Process(sys_clk,rst)
+Registers : Process(sys_clk)
 begin
 	IF (SYS_CLK'event and SYS_CLK = '1') then
 		IF (RST = '1') then
@@ -219,7 +219,7 @@ GALOIS_MUL_1 <= GALOIS_MULTPY(STAGE1_3,STAGE1_2);
 GALOIS_ADD_2 <= STAGE2_2 XOR STAGE2_3; 
 
 --GALOIS_MUL_INV <=  CRAZY SET OF BOOLEAN EQUATIONS, try this nice lookup table instead
-MUL_INV_LOOKUP : PROCESS(GALOIS_ADD_2,GALOIS_MUL_INV)
+MUL_INV_LOOKUP : PROCESS(GALOIS_ADD_2)
 begin
 	case GALOIS_ADD_2 is
 		when X"0" => GALOIS_MUL_INV <= X"0";
