@@ -116,7 +116,7 @@ BEGIN
       wait for SYS_CLK_period*10;
 		SubBytes_IN 	<= X"193de3bea0f4e22b9ac68d2ae9f84808";
 		CORRECT_OUTPUT <= X"d42711aee0bf98f1b8b45de51e415230";
-		Wait for 16ns;
+		Wait for 16 ns;
 		SubBytes_IN 	<= X"000102030405060708090A0B0C0D0E0F";
 		CORRECT_OUTPUT <= X"637c777bf26b6fc53001672bfed7ab76";
       wait;

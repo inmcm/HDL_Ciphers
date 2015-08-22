@@ -113,7 +113,7 @@ BEGIN
       wait for Sys_Clk_period*10;
 		ShiftRows_In 	<= X"d42711aee0bf98f1b8b45de51e415230";
 		CORRECT_OUTPUT <= X"d4bf5d30e0b452aeb84111f11e2798e5";
-		wait for 20ns;
+		wait for 20 ns;
 		ShiftRows_In 	<= X"49ded28945db96f17f39871a7702533b";
 		CORRECT_OUTPUT <= X"49db873b453953897f02d2f177de961a";		
       wait;
