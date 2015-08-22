@@ -89,7 +89,7 @@ function little_endian (b: std_logic_vector) return std_logic_vector is -- 80-bi
 
 begin
 
-MAIN_TRIVIUM : PROCESS (SYS_CLK,CNTRL) ---Core LFSR is comprised of three shift registers connected via feedback nodes (t1,t2,t3) 
+MAIN_TRIVIUM : PROCESS (SYS_CLK) ---Core LFSR is comprised of three shift registers connected via feedback nodes (t1,t2,t3) 
 begin 									--Core must be loaded with key and 
 	IF(SYS_CLK'event AND SYS_CLK='1') then
 		IF (CNTRL = "10") then   ---Intial state setup based on spec 

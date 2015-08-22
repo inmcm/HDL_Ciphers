@@ -84,7 +84,7 @@ SIGNAL PLREG3	: STD_LOGIC_VECTOR(1 downto 0) := "00";
 
 begin
 -----Pipeling Happens after the Multiply Array
-PIPE_LINE_REG : PROCESS(SYS_CLK,RST)
+PIPE_LINE_REG : PROCESS(SYS_CLK)
 begin
 	IF (SYS_CLK'event and SYS_CLK = '1') then
 		IF (RST = '1') then

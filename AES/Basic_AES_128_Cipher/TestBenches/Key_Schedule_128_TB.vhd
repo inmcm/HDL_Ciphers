@@ -120,14 +120,14 @@ BEGIN
 		wait for 10 ns;
 		wait for 10 ns;
 		EXP_KEY <= '1';  --Enable Key Expansion
-		wait for 400ns;  ---Standard time frame for generating all 10 keys
+		wait for 400 ns;  ---Standard time frame for generating all 10 keys
 		EXP_KEY <= '0';
 		wait for 10 ns;
 		KEY_128 <= X"000102030405060708090A0B0C0D0E0F";
 		LOAD_KEY <= '1';
 		wait for 10 ns;
 		EXP_KEY <= '1';
-		wait for 400ns;
+		wait for 400 ns;
 		EXP_KEY <= '0';
 		wait for 10 ns;
 		EXP_KEY <= '1';		

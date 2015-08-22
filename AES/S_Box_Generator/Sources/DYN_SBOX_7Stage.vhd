@@ -147,7 +147,7 @@ Inst_GALOIS_MUL2_4_3: GALOIS_MUL2_4 PORT MAP(
 
 
 ---Pipeline Registers
-Registers : Process(sys_clk,rst)
+Registers : Process(sys_clk)
 begin
 	IF (SYS_CLK'event and SYS_CLK = '1') then
 		IF (RST = '1') then
@@ -238,7 +238,7 @@ GALOIS_MUL_LMBDA <= 	(STAGE2_2(2) XOR STAGE2_2(0)) &
 GALOIS_ADD_2 <= STAGE3_2 XOR STAGE3_3; 	
 
 --GALOIS_MUL_INV <=  CRAZY SET OF BOOLEAN EQUATIONS, try this nice lookup table instead
-MUL_INV_LOOKUP : PROCESS(GALOIS_ADD_2,GALOIS_MUL_INV)
+MUL_INV_LOOKUP : PROCESS(GALOIS_ADD_2)
 begin
 	case GALOIS_ADD_2 is
 		when X"0" => GALOIS_MUL_INV <= X"0";
@@ -258,8 +258,8 @@ begin
 		when X"E" => GALOIS_MUL_INV <= X"D";
 		when X"F" => GALOIS_MUL_INV <= X"4";
 		when others => GALOIS_MUL_INV <= X"0";
-	end case MUL_INV_LOOKUP ;
-END PROCESS;
+	end case;
+END PROCESS MUL_INV_LOOKUP;
 
 
 
