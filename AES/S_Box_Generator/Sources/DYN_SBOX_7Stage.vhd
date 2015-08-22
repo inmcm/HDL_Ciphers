@@ -258,8 +258,8 @@ begin
 		when X"E" => GALOIS_MUL_INV <= X"D";
 		when X"F" => GALOIS_MUL_INV <= X"4";
 		when others => GALOIS_MUL_INV <= X"0";
-	end case MUL_INV_LOOKUP ;
-END PROCESS;
+	end case;
+END PROCESS MUL_INV_LOOKUP;
 
 
 
